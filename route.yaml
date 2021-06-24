@@ -1,0 +1,14 @@
+---
+    apiVersion: route.openshift.io/v1
+    kind: Route
+    metadata:
+      labels:
+        app: modresort-app-web
+      name: modresort-app-web-route
+    spec:
+      #host: modresort-app-web-service-modresort-app.apps.91.121.172.228.nip.io
+      to:
+        kind: Service
+        name: modresort-app-web-service
+        weight: 100
+      wildcardPolicy: None
