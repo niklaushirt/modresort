@@ -1,25 +1,26 @@
-
-    apiVersion: apps/v1
-    kind: Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: modresort-app-web
+  labels:
+    app: modresort-app-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: modresort-app-web
+  template:
     metadata:
-      name: modresort-app-web
+      labels:
+        run: modresort-app-web
     spec:
-      replicas: 1
-      selector:
-        matchLabels:
-          run: modresort-app-web
-      template:
-        metadata:
-          labels:
-            run: modresort-app-web
-        spec:
-          containers:
-          - name: cmodresort-app-web
-            image: niklaushirt/modresort:1.0
-            env:
-            - name: MESSAGE_SERVICE_URL
-              value: "http://cloud-uni-message-service:8080/messages"
-            - name: CUSTOMER_SERVICE_URL
-              value: http://cloud-uni-customer-app:8080/customers
-            - name: ORDER_SERVICE_URL
-              value: http://cloud-uni-order-app:8080/orders
+      containers:
+      - name: cmodresort-app-web
+        image: niklaushirt/modresort:1.0
+        env:
+        - name: MESSAGE_SERVICE_URL
+          value: "http://cloud-uni-message-service:8080/messages"
+        - name: CUSTOMER_SERVICE_URL
+          value: http://cloud-uni-customer-app:8080/customers
+        - name: ORDER_SERVICE_URL
+          value: http://cloud-uni-order-app:8080/orders

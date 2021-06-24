@@ -1,15 +1,14 @@
----
-    apiVersion: networking.k8s.io/v1beta1
-    kind: Ingress
-    metadata:
-      name: modresort-app-web-ingress
-      labels:
-        app: modresort-app-web
-    spec:
-      rules:
-      - http:
-          paths:
-            - path: /resort
-              backend:
-                serviceName:  modresort-app-web-service
-                servicePort: 9080
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: modresort-app-web-ingress
+  labels:
+    app: modresort-app-web
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /resort
+          backend:
+            serviceName:  modresort-app-web-service
+            servicePort: 9080
